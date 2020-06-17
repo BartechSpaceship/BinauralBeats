@@ -1,10 +1,14 @@
 package com.example.therealbinauralexample;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -15,21 +19,18 @@ import java.util.ArrayList;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
     private ArrayList<CardItems> mCardList;
     private OnItemClickListener mListener;
+    private Context mContext;
 
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-    }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        mListener = listener;
-
-    }
+    public interface OnItemClickListener { void onItemClick(int position);}
+    public void setOnItemClickListener(OnItemClickListener listener) { mListener = listener; }
 
 
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         public ImageView mImageView;
         public TextView mTextView1;
         public TextView mTextView2;
+        public RelativeLayout parentLayout;
 
         public CardViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
@@ -73,6 +74,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
         holder.mTextView1.setText(currentItem.getTextTitle());
         holder.mTextView2.setText(currentItem.getTextDiscription());
+
+
+
+
 
     }
 

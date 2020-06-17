@@ -1,9 +1,13 @@
 package com.example.therealbinauralexample;
 
+import android.content.Intent;
+import android.view.View;
+
 public class CardItems {
     private int mImage;
     private String mTextTitle;
     private String mTextDiscription;
+
 
     public CardItems(int image, String textTitle, String textDiscription){
         mImage = image;
@@ -11,6 +15,7 @@ public class CardItems {
         mTextDiscription = textDiscription;
 
     }
+
     public void changeText1(String text) {
         mTextTitle = text;
     }
