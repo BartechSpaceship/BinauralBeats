@@ -4,14 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:shadowColor="#000"
+    android:shadowDx="0"
+    android:shadowDy="30"
+    android:shadowRadius="50"
     tools:context=".First_LastPage.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="4dp"
-        android:background="@android:color/darker_gray"
-        android:scrollbars="vertical"
+        android:padding="16dp"
+        android:background="@android:color/white"
+
+
         android:id="@+id/recyclerView"/>
 
 

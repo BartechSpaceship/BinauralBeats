@@ -1,14 +1,15 @@
 package com.example.therealbinauralexample.Choices;
 
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.therealbinauralexample.First_LastPage.LastPage;
 import com.example.therealbinauralexample.R;
 import com.example.therealbinauralexample.Adapters.SecondPageAdapter;
 import com.example.therealbinauralexample.Items.SecondPageItem;
@@ -27,7 +28,9 @@ public class SpiritBellController extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_page_binaura_beat);
-        Log.d("SecondPage", "onCreate: SECONDPAGECREATEDSUCCESSFULY");
+        getSupportActionBar().setTitle("Action Bar 2 ");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         createExampleList();
         buildRecyclerView();
@@ -56,6 +59,14 @@ public class SpiritBellController extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
+        final Intent final_Screen = new Intent(this, LastPage.class);
+        mAdapter.setOnItemClickListener(new SecondPageAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                mSecondPageItemList.get(position);
+                startActivity(final_Screen);
+            }
+        });
 
 
     }

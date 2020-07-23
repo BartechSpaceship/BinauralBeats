@@ -5,14 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".First_LastPage.MainActivity">
+    tools:context=".First_LastPage.MainActivity"
+    android:shadowColor="#000"
+    android:shadowDx="0"
+    android:shadowDy="30"
+    android:shadowRadius="50"
+    >
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="4dp"
-        android:background="@android:color/darker_gray"
+        android:padding="16dp"
+        android:background="@android:color/white"
         android:scrollbars="vertical"
+
         android:id="@+id/second_page_recycler_view"/>
 
 

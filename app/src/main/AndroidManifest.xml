@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/Theme.AppCompat.Light">
         <activity android:name=".First_LastPage.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,9 +17,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Choices.SpiritBellController"/>
-        <activity android:name=".Choices.SleepBellController"/>
-        <activity android:name=".First_LastPage.finalScreen"/>
+        <activity android:name=".Choices.SpiritBellController"
+            android:parentActivityName=".First_LastPage.MainActivity"/>
+        <activity android:name=".Choices.SleepBellController"
+            android:parentActivityName=".First_LastPage.MainActivity"/>
+        <activity android:name=".First_LastPage.LastPage"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".Choices.BrainBellController"
+            android:parentActivityName=".First_LastPage.MainActivity"/>
+        <activity android:name=".Choices.StudyBellController"
+            android:parentActivityName=".First_LastPage.MainActivity"/>
+        <activity android:name=".Choices.BodyBellController"
+            android:parentActivityName=".First_LastPage.MainActivity"/>
 
     </application>
 
