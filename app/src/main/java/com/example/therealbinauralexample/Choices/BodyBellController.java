@@ -16,8 +16,9 @@ import com.example.therealbinauralexample.R;
 import java.util.ArrayList;
 
 public class BodyBellController extends AppCompatActivity {
-    private ArrayList<SecondPageItem> mSecondPageItemList;
+    public static final String BODY = "com.example.therealbinauralexample.BODY";
 
+    private ArrayList<SecondPageItem> mSecondPageItemList;
     private RecyclerView mRecyclerView;
     private SecondPageAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -39,12 +40,12 @@ public class BodyBellController extends AppCompatActivity {
 
     public void createExampleList(){
         mSecondPageItemList = new ArrayList<>();
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_group, "You Are in Body Controller", "2.0Hz TBD"));
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_android, "Lucid Dreaming", "1.5Hz TBD"));
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_group, "Wellbeing", "1.5Hz 56-57"));
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_launcher_foreground, "Relaxation", "5Hz 220-225"));
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_attach, "Restful sleep", "3.4Hz - 126-130.4"));
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_android, "THIS IS SECONDPAGE", "10Hz 280-290"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_group, "Relaxation", "0.5Hz 60-60.5"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_android, "Universal Healing", "1.5Hz 68-69.5"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_group, "Bliss", "0.9 Hz 80-80.9"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_launcher_foreground, "Reduce Stress", "4.0Hz 418-422"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_attach, "Emotional Healing", "7Hz 284-291"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_android, "Fatigue", "20Hz 220-240"));
 
     }
     public void buildRecyclerView(){
@@ -61,6 +62,10 @@ public class BodyBellController extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 mSecondPageItemList.get(position);
+
+
+                final_Screen.putExtra(BodyBellController.BODY, position);
+
                 startActivity(final_Screen);
             }
         });

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 //This is where I will create adapter with all the items, and then on click this will populate the new view
 public class SpiritBellController extends AppCompatActivity {
+    public static final String SPIRIT = "com.example.therealbinauralexample.SPIRIT";
     private ArrayList<SecondPageItem> mSecondPageItemList;
 
     private RecyclerView mRecyclerView;
@@ -64,6 +65,9 @@ public class SpiritBellController extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 mSecondPageItemList.get(position);
+
+                final_Screen.putExtra(SpiritBellController.SPIRIT,position + 4 );
+
                 startActivity(final_Screen);
             }
         });

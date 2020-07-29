@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class BrainBellController extends AppCompatActivity {
 
+    public static final String BRAIN = "com.example.therealbinauralexample.BRAIN";
     private ArrayList<SecondPageItem> mSecondPageItemList;
 
     private RecyclerView mRecyclerView;
@@ -39,12 +40,12 @@ public class BrainBellController extends AppCompatActivity {
 
     public void createExampleList(){
         mSecondPageItemList = new ArrayList<>();
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_group, "Brain Controller ", "2.0Hz TBD"));
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_android, "Lucid Dreaming", "1.5Hz TBD"));
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_group, "Wellbeing", "1.5Hz 56-57"));
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_launcher_foreground, "Relaxation", "5Hz 220-225"));
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_attach, "Restful sleep", "3.4Hz - 126-130.4"));
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_android, "THIS IS SECONDPAGE", "10Hz 280-290"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_group, "Anxiety Relief", "2.5Hz 315-317"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_android, "Creativity", "7.5Hz 253-260.5"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_group, "Overcome Addiction", "8.22Hz 350-358.22"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_launcher_foreground, "Relaxed/Awake", "11Hz 400-411"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_attach, "Focus", "40Hz 130-170"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_android, "Intelligence", "15.4Hz 275-290.4"));
 
 
 
@@ -63,6 +64,9 @@ public class BrainBellController extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 mSecondPageItemList.get(position);
+
+                final_Screen.putExtra(BrainBellController.BRAIN, position);
+
                 startActivity(final_Screen);
             }
         });

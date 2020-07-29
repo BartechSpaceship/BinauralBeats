@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void createExampleList() {
         mCardList = new ArrayList<>();
-        mCardList.add(new CardItems(R.drawable.ic_attach, "Study", "Memory | Concentration | Focus | Study aid"));
-        mCardList.add(new CardItems(R.drawable.ic_android, "Spirit", "Unity | Inner awareness | Shamanic conciousness | Astral travel | Solfeggio | Trance | Third Eye"));
-        mCardList.add(new CardItems(R.drawable.ic_attach, "Sleep", "Lucid dreaming | Restful sleep | Relief | Sleep | Wellbeing | Less sleep required"));
+        mCardList.add(new CardItems(R.drawable.ic_attach, "Study", "Great for focus, deep work, school and learning"));
+        mCardList.add(new CardItems(R.drawable.ic_android, "Spirit", "Beats that allow for greater spiritual development"));
+        mCardList.add(new CardItems(R.drawable.ic_attach, "Sleep", "Used to induce "));
         mCardList.add(new CardItems(R.drawable.ic_android, "Brain", "Intelligence | Focus | Relaxed yet awake | Creativity | Overcome addiction | Releave Anxiety "));
         mCardList.add(new CardItems(R.drawable.ic_group, "Body", "Universal healing | Euphoria | Reduced stress | Emotional healing | Relaxation | Migrane pain | Fatigue"));
 

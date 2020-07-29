@@ -16,6 +16,7 @@ import com.example.therealbinauralexample.Items.SecondPageItem;
 import java.util.ArrayList;
 
 public class SleepBellController extends AppCompatActivity {
+    public static final String SLEEP = "com.example.therealbinauralexample.SLEEP";
     private ArrayList<SecondPageItem> mSecondPageItemList;
 
     private RecyclerView mRecyclerView;
@@ -40,10 +41,10 @@ public class SleepBellController extends AppCompatActivity {
         mSecondPageItemList = new ArrayList<>();
         mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_group, "Sleep", "2.0Hz TBD"));
         mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_android, "Lucid Dreaming", "1.5Hz TBD"));
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_group, "Wellbeing", "1.5Hz 56-57"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_group, "Wellbeing", "1.5Hz 68-69.5"));
         mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_launcher_foreground, "Relaxation", "5Hz 220-225"));
         mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_attach, "Restful sleep", "3.4Hz - 126-130.4"));
-        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_android, "THIS IS SECONDPAGE", "10Hz 280-290"));
+        mSecondPageItemList.add(new SecondPageItem(R.drawable.ic_android, "Relief", "10Hz 280-290"));
 
 
 
@@ -62,6 +63,9 @@ public class SleepBellController extends AppCompatActivity {
                     @Override
                     public void onItemClick(int position) {
                         mSecondPageItemList.get(position);
+
+                        final_Screen.putExtra(SleepBellController.SLEEP, position + 11);
+
                         startActivity(final_Screen);
             }
         });

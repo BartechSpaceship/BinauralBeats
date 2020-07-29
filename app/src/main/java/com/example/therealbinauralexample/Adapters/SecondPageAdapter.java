@@ -29,7 +29,7 @@ public class SecondPageAdapter extends RecyclerView.Adapter<SecondPageAdapter.Se
 
         public SecondPageViewHolder(View itemView, final OnItemClickListener listener){
             super(itemView);
-            mSecondImage = itemView.findViewById(R.id.second_page_imageView);
+          //  mSecondImage = itemView.findViewById(R.id.second_page_imageView);
             mSecondTextTitle = itemView.findViewById(R.id.second_page_textViewTitle);
             mSecondTextDiscription = itemView.findViewById(R.id.second_page_textViewDiscription);
 
@@ -66,7 +66,7 @@ public class SecondPageAdapter extends RecyclerView.Adapter<SecondPageAdapter.Se
     public void onBindViewHolder(@NonNull SecondPageViewHolder holder, int position) {
         SecondPageItem currentItem = mSecondPageItemList.get(position);
 
-        holder.mSecondImage.setImageResource(currentItem.getSecondPageImage());
+      //  holder.mSecondImage.setImageResource(currentItem.getSecondPageImage());
         holder.mSecondTextTitle.setText(currentItem.getSecondPageTitle());
         holder.mSecondTextDiscription.setText(currentItem.getSecondPageDiscription());
 
