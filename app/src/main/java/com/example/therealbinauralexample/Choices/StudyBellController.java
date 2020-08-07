@@ -65,7 +65,8 @@ public class StudyBellController extends AppCompatActivity {
             public void onItemClick(int position) {
 
                 //Gives the int of position
-                final_Screen.putExtra(StudyBellController.STUDY, position);
+                final_Screen.putExtra(StudyBellController.STUDY, position + 1);
+
 
                 startActivity(final_Screen);
 

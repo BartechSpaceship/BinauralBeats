@@ -66,7 +66,7 @@ public class SpiritBellController extends AppCompatActivity {
             public void onItemClick(int position) {
                 mSecondPageItemList.get(position);
 
-                final_Screen.putExtra(SpiritBellController.SPIRIT,position + 4 );
+                final_Screen.putExtra(SpiritBellController.SPIRIT,position + 5 );
 
                 startActivity(final_Screen);
             }

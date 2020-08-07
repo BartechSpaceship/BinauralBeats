@@ -15,6 +15,7 @@ public class LoopMediaPlayer {
     private MediaPlayer mCurrentPlayer = null;
     private MediaPlayer mNextPlayer = null;
 
+
     public static LoopMediaPlayer create(Context context, int resId) {
         return new LoopMediaPlayer(context, resId);
     }
@@ -23,11 +24,15 @@ public class LoopMediaPlayer {
         mContext = context;
         mResId = resId;
 
+
+
         mCurrentPlayer = MediaPlayer.create(mContext, mResId);
+
         mCurrentPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
                 mCurrentPlayer.start();
+
             }
         });
 
@@ -38,6 +43,7 @@ public class LoopMediaPlayer {
         mNextPlayer = MediaPlayer.create(mContext, mResId);
         mCurrentPlayer.setNextMediaPlayer(mNextPlayer);
         mCurrentPlayer.setOnCompletionListener(onCompletionListener);
+
     }
 
     private MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {

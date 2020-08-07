@@ -64,7 +64,7 @@ public class SleepBellController extends AppCompatActivity {
                     public void onItemClick(int position) {
                         mSecondPageItemList.get(position);
 
-                        final_Screen.putExtra(SleepBellController.SLEEP, position + 11);
+                        final_Screen.putExtra(SleepBellController.SLEEP, position + 12);
 
                         startActivity(final_Screen);
             }

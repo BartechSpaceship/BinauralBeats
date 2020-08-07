@@ -64,7 +64,7 @@ public class BodyBellController extends AppCompatActivity {
                 mSecondPageItemList.get(position);
 
 
-                final_Screen.putExtra(BodyBellController.BODY, position);
+                final_Screen.putExtra(BodyBellController.BODY, position + 24);
 
                 startActivity(final_Screen);
             }

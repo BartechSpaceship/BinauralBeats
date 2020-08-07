@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -22,12 +23,15 @@ import com.example.therealbinauralexample.R;
 
 public class LastPage extends AppCompatActivity {
 
-    public int bigBoyInt = 0;
+    //I Could put all the sounds under one position with a lot of numbers tbh and test that w
+
+    public static final int bigBoyInt = 0;
     private ImageView mainImage;
-    private Button x_button;
+    private ImageButton x_button;
     private SeekBar volumeBar;
     private LoopMediaPlayer mLoopMediaPlayer;
-    private Button pauseButton;
+    private ImageButton pauseButton;
+    private TextView tempText;
 
 
     @Override
@@ -37,13 +41,22 @@ public class LastPage extends AppCompatActivity {
 
 
         mainImage = findViewById(R.id.final_image);
-        x_button = findViewById(R.id.play_button);
+        x_button = findViewById(R.id.x_button);
         pauseButton = findViewById(R.id.pause_button);
-
+        tempText = findViewById(R.id.temp_text);
+        volumeBar = findViewById(R.id.sound_level);
 
         playStudySound();
         playSpiritSound();
         playSleepSound();
+        playBrainSound();
+        playBodySound();
+
+
+
+
+
+
 
 
         //Will end the activity and stop the sound
@@ -59,15 +72,24 @@ public class LastPage extends AppCompatActivity {
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mLoopMediaPlayer.isPlaying() == true) {
-                    mLoopMediaPlayer.pause();
-                } else
+
+                if (!mLoopMediaPlayer.isPlaying()) {
                     mLoopMediaPlayer.start();
+                    pauseButton.setImageResource(R.drawable.pause_button_foreground);
+
+                } else {
+                    mLoopMediaPlayer.pause();
+                    pauseButton.setImageResource(R.drawable.play_button_foreground);
+
+                }
+
+
             }
         });
 
         //  Volume Bar
-        volumeBar = findViewById(R.id.sound_level);
+
+
         volumeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -89,44 +111,63 @@ public class LastPage extends AppCompatActivity {
     }
 
         private void playStudySound () {
-
-            //Taking the intent from STUDYCONTROLLER
             Intent studyIntent = getIntent();
-            int currentIntent = studyIntent.getIntExtra(StudyBellController.STUDY, 0);
+            int currentStudyIntent = studyIntent.getIntExtra(StudyBellController.STUDY, 0);
 
             //This needs to be lower
-            if (currentIntent == 0) {
-                mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.study_memory);
-            } else if (currentIntent == 1) {
-                mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.study_focus);
-            } else if (currentIntent == 2){
-                mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.study_concentration);
-            } else if (currentIntent == 3) {
-                mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.study_study_aid);
-            } else {
-                Toast.makeText(this, "invalid STUDY player", Toast.LENGTH_SHORT).show();
-            }
+                if (currentStudyIntent == 1) {
+                    mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.study_memory);
+                    Toast.makeText(this, "Playing 1", Toast.LENGTH_SHORT).show();
+                    tempText.setText("Memory");
+
+                } else if (currentStudyIntent == 2) {
+                    mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.study_focus);
+                    Toast.makeText(this, "Playing 2", Toast.LENGTH_SHORT).show();
+                    tempText.setText("Focus");
+                } else if (currentStudyIntent == 3) {
+                    mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.study_concentration);
+                    tempText.setText("Concentration");
+                    Toast.makeText(this, "Playing 3 ", Toast.LENGTH_SHORT).show();
+                } else if (currentStudyIntent == 4) {
+                    mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.study_study_aid);
+                    Toast.makeText(this, "Playing 4", Toast.LENGTH_SHORT).show();
+                    tempText.setText("Study Aid");
+                } else {
+                    //Toast.makeText(this, "invalid STUDY player", Toast.LENGTH_SHORT).show();
+                }
 
         }
         private void playSpiritSound(){
         Intent spiritIntent = getIntent();
         int currentSpiritIntent = spiritIntent.getIntExtra(SpiritBellController.SPIRIT, 0);
-            if (currentSpiritIntent == 4) {
+
+            if (currentSpiritIntent == 5) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.spirit_unity);
-            } else if (currentSpiritIntent == 5) {
+                Toast.makeText(this, "Playing 5", Toast.LENGTH_SHORT).show();
+                tempText.setText("Unity");
+            } else if (currentSpiritIntent == 6) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.spirit_inner_awareness);
-            } else if (currentSpiritIntent == 6){
+                Toast.makeText(this, "Playing 6", Toast.LENGTH_SHORT).show();
+                tempText.setText("Inner Awareness");
+            } else if (currentSpiritIntent == 7){
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.spirit_conciousness);
-            } else if (currentSpiritIntent == 7) {
+                Toast.makeText(this, "Playing 7", Toast.LENGTH_SHORT).show();
+                tempText.setText("Conciousness");
+            } else if (currentSpiritIntent == 8) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.spirit_astral_travel);
-            } else if (currentSpiritIntent == 8 ) {
-                mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.spirit_solffegio);
+                Toast.makeText(this, "Playing 8", Toast.LENGTH_SHORT).show();
+                tempText.setText("Astral Travel");
             } else if (currentSpiritIntent == 9 ) {
+                mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.spirit_solffegio);
+                tempText.setText("Solffegio");
+            } else if (currentSpiritIntent == 10) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.spirit_trance);
-            } else if (currentSpiritIntent == 10 ) {
+                tempText.setText("Trance");
+            } else if (currentSpiritIntent == 11 ) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.spirit_third_eye);
+                tempText.setText("Third Eye");
             } else {
-                Toast.makeText(this, "invalid STUDY player", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "invalid SPIRIT player", Toast.LENGTH_SHORT).show();
             }
 
 
@@ -134,42 +175,54 @@ public class LastPage extends AppCompatActivity {
         private void playSleepSound(){
         Intent sleepIntent = getIntent();
         int currentSleepIntent = sleepIntent.getIntExtra(SleepBellController.SLEEP, 0);
-            if (currentSleepIntent == 11) {
-                Toast.makeText(this, "11", Toast.LENGTH_SHORT).show();
-             //   mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.brain_intelligence);
-            } else if (currentSleepIntent == 12) {
-                Toast.makeText(this, "12", Toast.LENGTH_SHORT).show();
-            //    mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.brain_focus);
-            } else if (currentSleepIntent == 13){
+            if (currentSleepIntent == 12) {
+                Toast.makeText(this, "Replace 12", Toast.LENGTH_SHORT).show();
+                mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.brain_intelligence);
+                tempText.setText("TO BE DONE beat doesnt exist yet");
+            } else if (currentSleepIntent == 13) {
+                Toast.makeText(this, "Replace 13", Toast.LENGTH_SHORT).show();
+                mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.brain_focus);
+                tempText.setText("TO BE DONE beat doesnt exist yet ");
+            } else if (currentSleepIntent == 14){
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.sleep_wellbeing);
-            } else if (currentSleepIntent == 14) {
+                tempText.setText("Wellbeing");
+            } else if (currentSleepIntent == 15) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.sleep_relaxation);
-            } else if (currentSleepIntent == 15 ) {
-                mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.sleep_restful_sleep);
+                tempText.setText("Relaxation");
             } else if (currentSleepIntent == 16 ) {
+                mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.sleep_restful_sleep);
+                tempText.setText("Restful Sleep");
+            } else if (currentSleepIntent == 17 ) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.sleep_relief);
+                tempText.setText("Sleep Relief but it sounds terrible and needs to be remadew");
             }else {
-                Toast.makeText(this, "invalid STUDY player", Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(this, "invalid SLEEP player", Toast.LENGTH_SHORT).show();
             }
 
         }
         private void playBrainSound(){
         Intent brainIntent = getIntent();
             int currentBrainIntent = brainIntent.getIntExtra(BrainBellController.BRAIN, 0);
-            if (currentBrainIntent == 0) {
+            if (currentBrainIntent == 18) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.brain_anxiety_relief);
-            } else if (currentBrainIntent == 1) {
+                tempText.setText("Anxiety Relief");
+            } else if (currentBrainIntent == 19) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.brain_creativity);
-            } else if (currentBrainIntent == 2){
+                tempText.setText("Creativity");
+            } else if (currentBrainIntent == 20){
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.brain_overcome_addiction);
-            } else if (currentBrainIntent == 3) {
+                tempText.setText("Overcome Addiction");
+            } else if (currentBrainIntent == 21) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.brain_relaxed_awake);
-            } else if (currentBrainIntent == 4 ) {
+                tempText.setText("Relaxed/Focused");
+            } else if (currentBrainIntent == 22 ) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.brain_focus);
-            } else if (currentBrainIntent == 5 ) {
+                tempText.setText("Focus");
+            } else if (currentBrainIntent == 23 ) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.brain_intelligence);
+                tempText.setText("Intelligence");
             } else {
-                Toast.makeText(this, "invalid STUDY player", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "invalid BRAIN player", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -177,20 +230,26 @@ public class LastPage extends AppCompatActivity {
         Intent bodyIntent = getIntent();
             int currentBodyIntent = bodyIntent.getIntExtra(BodyBellController.BODY, 0);
 
-            if (currentBodyIntent == 0) {
+            if (currentBodyIntent == 24) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.body_relaxation);
-            } else if (currentBodyIntent == 1) {
+                tempText.setText("Relaxation");
+            } else if (currentBodyIntent == 25) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.body_universal_healing);
-            } else if (currentBodyIntent == 2){
+                tempText.setText("Universal Healing");
+            } else if (currentBodyIntent == 26){
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.body_bliss);
-            } else if (currentBodyIntent == 3) {
+                tempText.setText("Bliss");
+            } else if (currentBodyIntent == 27) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.body_reduce_stress);
-            } else if (currentBodyIntent == 4 ) {
+                tempText.setText("Reduce Stress");
+            } else if (currentBodyIntent == 28 ) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.body_emotional_healing);
-            } else if (currentBodyIntent == 5 ) {
+                tempText.setText("Emotional Healing");
+            } else if (currentBodyIntent == 29 ) {
                 mLoopMediaPlayer = new LoopMediaPlayer(this, R.raw.body_fatigue);
+                tempText.setText("Fatigue");
             } else {
-                Toast.makeText(this, "invalid STUDY player", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "invalid BODY player", Toast.LENGTH_SHORT).show();
             }
         }
 

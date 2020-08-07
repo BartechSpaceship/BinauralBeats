@@ -65,7 +65,7 @@ public class BrainBellController extends AppCompatActivity {
             public void onItemClick(int position) {
                 mSecondPageItemList.get(position);
 
-                final_Screen.putExtra(BrainBellController.BRAIN, position);
+                final_Screen.putExtra(BrainBellController.BRAIN, position + 18);
 
                 startActivity(final_Screen);
             }
